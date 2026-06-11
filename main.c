@@ -33,9 +33,9 @@ struct PieceProfile {
     uint16_t maxEdges;
 };
 
-// --- PROFILER (Dina faktiska mätvärden) ---
+// --- PROFILER ---
 struct PieceProfile profiles[] = {
-    // Namn,      Mål-Hz,   Tol+/-,  MinE,  MaxE
+    // Namn,      MÃ¥l-Hz,   Tol+/-,  MinE,  MaxE
     {"Tom",       241500,   1500,    28,    38},
     {"Bonde",     257000,   4000,    11,    18},
     {"Kung",      274000,   6000,     7,    14},
@@ -44,9 +44,9 @@ struct PieceProfile profiles[] = {
 
 #define NUM_PROFILES 4
 
-// --- MÄTFUNKTION ---
+// --- MÃ„TFUNKTION ---
 struct MeasureResult get_single_freq() {
-    // Burst: 5 cykler anpassad för ca 240kHz (2.08us per halvperiod)
+    // Burst: 5 cykler anpassad fÃ¶r ca 240kHz
     DDRB |= (1 << DDB3);
     for(uint8_t i = 0; i < 5; i++) {
         PORTB |= (1 << PORTB3);  _delay_us(1.7);
@@ -57,14 +57,14 @@ struct MeasureResult get_single_freq() {
     uint16_t edges = 0;
     uint16_t t_first = 0, t_last = 0;
     TCNT1 = 0;
-    TCCR1B = (1 << CS10); // Starta timer (16MHz)
+    TCCR1B = (1 << CS10); 
 
     for(uint32_t timeout = 0; timeout < 20000; timeout++) {
         if (ACSR & (1 << ACO)) {
             if (edges == 0) t_first = TCNT1;
             t_last = TCNT1;
             edges++;
-            // Vänta på att signalen går låg så vi inte räknar samma edge två gånger
+            // VÃ¤nta pÃ¥ att signalen gÃ¥r lÃ¥g sÃ¥ vi inte rÃ¤knar samma edge tvÃ¥ gÃ¥nger
             while((ACSR & (1 << ACO)) && (timeout < 20000)) timeout++;
         }
     }
@@ -97,7 +97,7 @@ const char* identify_piece(uint32_t f, uint16_t e) {
 // --- HUVUDPROGRAM ---
 int main(void) {
     uart_init();
-    ACSR = (1 << ACBG); // 1.1V Intern Ref
+    ACSR = (1 << ACBG); 
     char buffer[100];
     
     char last_detected[12] = "";
