@@ -17,8 +17,8 @@ Instead of using sensitive hardware interrupts, this system utilizes a highly st
 
 The baseline frequency (empty square) is calibrated to 241.5 kHz based on Thomson's resonance formula.
 
-* Capacitor (C): 10 nF (0.01 uF). Use a high-quality film capacitor (e.g., Polypropylene) or a ceramic C0G/NP0 type to minimize temperature drift.
-* Coil (L): ~43.5 uH (Microhenry).
+* Capacitor (C): 36 nF. Use high-quality film capacitors or ceramic C0G/NP0 types to minimize temperature drift.
+* Coil (L): Custom PCB Trace Coil (~10.4 uH to 12 uH).
 
 ### PCB Trace Coil
 To replicate this project exactly, you will need to design a custom PCB trace coil configuration using the specific board layout and dimensions to match the target 43.5 uH inductance required for the chess square matrix.
