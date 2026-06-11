@@ -64,7 +64,7 @@ struct MeasureResult get_single_freq() {
             if (edges == 0) t_first = TCNT1;
             t_last = TCNT1;
             edges++;
-            // Vänta på att signalen går låg så vi inte räknar samma edge två gånger
+            // Vänta på att signalen går låg så vi inte räknar samma edge två ggr
             while((ACSR & (1 << ACO)) && (timeout < 20000)) timeout++;
         }
     }
