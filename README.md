@@ -1,4 +1,4 @@
-# EdvinsCodeChess - Inductive Chess Piece Identifier
+# Chess on a PCB - Inductive Chess Piece Identifier
 
 An embedded system for the **ATmega328P** (Arduino Uno) that identifies chess pieces using inductive sensing. By measuring changes in resonance frequency ($f$) and signal damping (oscillation `edges`), the system distinguishes between different pieces based on the size and material of their metallic inserts.
 
